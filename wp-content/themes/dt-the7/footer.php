@@ -38,31 +38,24 @@ jQuery(document).ready(function(){
     //Custom content Homepage
     if (jQuery('body').hasClass('home')) {
         if (jQuery('.main-column-left').height() > (jQuery('.main-column-right').height() + 50)) {
-            $old_height = jQuery('.main-column-left .expand-container').height();
-            $new_height = jQuery('.main-column-right').height() - jQuery('.main-column-left .vc_custom_heading').first().height() - jQuery('.main-column-left .wpb_single_image').first().height();
-            jQuery('.main-column-left .expand-container').css('height',$new_height-60).css('overflow','hidden');
-            jQuery('.main-column-left .expand-container .wpb_wrapper').css('height',$new_height-60).css('overflow','hidden');
-            jQuery('.main-column-left .expand-container').after('<a href="javascript:void(0);" style="width" class="more-link-content closed"> Xem thêm >> </a>');
+            $old_height = jQuery('.main-column-right').height();
+            $new_height = jQuery('.main-column-left').height();
+            jQuery('.main-column-left').css('height',$old_height-30).css('overflow','hidden').css('position', 'relative');
+            jQuery('.main-column-left').after('<a href="javascript:void(0);" style="position:absolute;bottom:-10px;left: 25px;width: 50%;" class="more-link-content closed"> Xem thêm >> </a>');
             jQuery('.more-link-content').click(function(){
                 var myControl = jQuery(this);
-                var container = jQuery('.main-column-left .expand-container');
-                var content = jQuery('.main-column-left .expand-container .wpb_wrapper');
+                var container = jQuery('.main-column-left');
                 if (myControl.hasClass('closed')) {
-					myControl.html('Thu gọn <<');
+                    myControl.html('Thu gọn <<');
                     myControl.removeClass('closed');
                     myControl.addClass('opened');
-                    myControl.css('padding-top','0px');
-                    container.attr('style','').animate({'height': $old_height}, {duration: '1000'}, 'linear');
-                    content.attr('style','').animate({'height': $old_height}, {duration: '1000'}, 'linear');
+                    container.attr('style','').animate({'height': $new_height+30}, {duration: '1000'}, 'linear');
                 } else {
-					myControl.html('Xem thêm >>');
+                    myControl.html('Xem thêm >>');
                     myControl.removeClass('opened');
                     myControl.addClass('closed');
-                    myControl.css('padding-top','18px');
-                    container.css('overflow','hidden');
-                    content.css('overflow','hidden');
-                    container.animate({'height': $new_height-60}, {duration: '1000'}, 'linear');
-                    content.animate({'height': $new_height-60}, {duration: '1000'}, 'linear');
+                    container.css('overflow','hidden').css('position', 'relative');
+                    container.animate({'height': $old_height-30}, {duration: '1000'}, 'linear');
                 }
             });
         }
