@@ -39,7 +39,7 @@ jQuery(document).ready(function(){
     if (jQuery('body').hasClass('home')) {
         if (jQuery('.main-column-left').height() > (jQuery('.main-column-right').height() + 50)) {
             $old_height = jQuery('.main-column-right').height();
-            $new_height = jQuery('.main-column-left').height();
+            $new_height = jQuery('.main-column-left .wpb_wrapper').first().height();
             jQuery('.main-column-left').css('height',$old_height-30).css('overflow','hidden').css('position', 'relative');
             jQuery('.main-column-left').after('<a href="javascript:void(0);" style="position:absolute;bottom:-10px;left: 25px;width: 50%;" class="more-link-content closed"> Xem thêm >> </a>');
             jQuery('.more-link-content').click(function(){
